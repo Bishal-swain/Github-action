@@ -4,9 +4,10 @@ name: CI Pipeline
 
 # Run this pipeline when code is pushed to main
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
 
 
 # Define the jobs

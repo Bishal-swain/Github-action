@@ -28,3 +28,14 @@ project
 
      .yml
      .yaml
+
+
+
+     2 pipelines 
+     ci/cd pipeline 
+     github action , jenkins 
+
+     ci pipeline
+     cd pipeline
+
+     pipeline depandancy 
