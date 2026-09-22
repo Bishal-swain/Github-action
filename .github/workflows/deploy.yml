@@ -1,0 +1,42 @@
+# Name of Pipeline 2
+name: Deploy Pipeline
+
+
+# Run this workflow after another workflow finishes
+on:
+
+  # workflow_run means:
+  # wait for another GitHub Actions workflow
+  workflow_run:
+
+    # Name of the workflow we are waiting for
+    workflows:
+      - CI Pipeline
+
+    # Run when the CI Pipeline is completed
+    types:
+      - completed
+
+
+# Define the jobs
+jobs:
+
+  # Deployment job
+  deploy:
+
+    # Run on Ubuntu
+    runs-on: ubuntu-latest
+
+    # Only run if the previous CI Pipeline succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # Steps inside the job
+    steps:
+
+      # Print deployment message
+      - name: Deploy Application
+        run: |
+          echo "CI Pipeline was successful"
+          echo "Starting deployment..."
+          echo "Application deployed successfully"
+          

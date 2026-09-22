@@ -1,0 +1,50 @@
+# Name of Pipeline 1
+name: CI Pipeline
+
+
+# Run this pipeline when code is pushed to main
+on:
+  push:
+    branches:
+      - main
+
+
+# Define the jobs
+jobs:
+
+  # Job name
+  test:
+
+    # Use an Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Steps inside the job
+    steps:
+
+      # Get the code from GitHub
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Check whether index.html exists
+      - name: Check index.html
+        run: |
+
+          # Check if index.html exists
+          if test -f index.html; then
+
+            # File exists
+            echo "index.html exists"
+
+            # Print success message
+            echo "CI Pipeline Successful"
+
+          else
+
+            # File does not exist
+            echo "index.html not found"
+
+            # Make the pipeline fail
+            exit 1
+
+          # End of if statement
+          fi

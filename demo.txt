@@ -1,0 +1,24 @@
+
+1. clone the repo
+add the code 
+commit it , and push the code to github 
+
+
+github action 
+pipeline purpose 
+
+server - runner(github runner)
+pipeline code - yml (script)
+jobs 
+
+project 
+ test it 
+ build it 
+ deploy it 
+
+ jobs
+     steps 
+
+
+
+     u untracked 

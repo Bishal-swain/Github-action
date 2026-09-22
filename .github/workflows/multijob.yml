@@ -1,0 +1,98 @@
+# Name of the workflow
+name: Multi Job CI Pipeline
+
+
+# Define when the workflow should run
+on:
+
+  # Automatically run when code is pushed
+  push:
+
+    # Only when code is pushed to main
+    branches:
+      - main
+
+  # Allow manual execution from GitHub
+  workflow_dispatch:
+
+
+# Define all the jobs in this workflow
+jobs:
+
+
+  # ==============================
+  # JOB 1: CHECK WEBSITE
+  # ==============================
+
+  check-website:
+
+    # Run this job on an Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Tasks inside this job
+    steps:
+
+      # Get the project code from GitHub
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Check whether index.html exists
+      - name: Check index.html
+        run: |
+
+          # Check if index.html exists
+          if test -f index.html; then
+
+            # File exists
+            echo "index.html exists"
+
+          else
+
+            # File does not exist
+            echo "index.html not found"
+
+            # Mark the job as failed
+            exit 1
+
+          # End of the if statement
+          fi
+
+
+  # ==============================
+  # JOB 2: BUILD WEBSITE
+  # ==============================
+
+  build-website:
+
+    # Run this job on an Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Tasks inside this job
+    steps:
+
+      # Print a message
+      - name: Build Website
+        run: |
+          echo "Building website..."
+          echo "Website build completed successfully"
+
+
+  # ==============================
+  # JOB 3: FINAL MESSAGE
+  # ==============================
+
+  final-message:
+
+    # Run this job on an Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Tasks inside this job
+    steps:
+
+      # Print final message
+      - name: Pipeline Completed
+        run: |
+          echo "=============================="
+          echo "All jobs completed successfully"
+          echo "CI Pipeline Finished"
+          echo "=============================="
