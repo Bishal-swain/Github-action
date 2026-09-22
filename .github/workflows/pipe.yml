@@ -6,11 +6,11 @@ name: My First CI Pipeline
 on:
 
   # Automatically run the workflow when code is pushed
-  push:
+  # push:
 
-    # Only run automatically when code is pushed to the main branch
-    branches:
-      - main
+  #   # Only run automatically when code is pushed to the main branch
+  #   branches:
+  #     - main
 
   # Allows us to manually run the workflow
   # GitHub → Actions → Run workflow

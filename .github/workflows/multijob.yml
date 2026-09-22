@@ -6,11 +6,11 @@ name: Multi Job CI Pipeline
 on:
 
   # Automatically run when code is pushed
-  push:
+  # push:
 
-    # Only when code is pushed to main
-    branches:
-      - main
+  #   # Only when code is pushed to main
+  #   branches:
+  #     - main
 
   # Allow manual execution from GitHub
   workflow_dispatch:
